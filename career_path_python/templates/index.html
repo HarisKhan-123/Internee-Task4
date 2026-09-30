@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chart Your Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">A field guide for interns</p>
+    <h1>Chart <em>your</em> next career path</h1>
+    <p>Tell us what you know and what pulls your interest. We'll sketch a few routes worth exploring &mdash; each with a learning trail you can actually follow, one waypoint at a time.</p>
+  </header>
+
+  <section class="block" id="form-section">
+    <h2>Your profile</h2>
+    <p class="section-sub">The more specific, the better the routes we can plot.</p>
+
+    <div class="field">
+      <label for="skills-input">Skills you already have</label>
+      <div class="hint">Type one and press Enter &mdash; e.g. Python, wiring circuits, SEO writing</div>
+      <div class="tag-input-box" id="skills-box">
+        <input type="text" id="skills-input" placeholder="Add a skill&hellip;">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="interests-input">What pulls your interest</label>
+      <div class="hint">Subjects, industries, problems you like thinking about</div>
+      <div class="tag-input-box" id="interests-box">
+        <input type="text" id="interests-input" placeholder="Add an interest&hellip;">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="experience-select">Experience level</label>
+        <select id="experience-select">
+          <option value="Just starting out, mostly coursework and self-study">Just starting out</option>
+          <option value="Some hands-on experience — internships or personal projects" selected>Some hands-on experience</option>
+          <option value="Solid experience, looking to specialize further">Solid experience</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="goals-input">Anything else worth knowing <span class="optional">(optional)</span></label>
+        <input type="text" id="goals-input" placeholder="e.g. want to stay remote-friendly">
+      </div>
+    </div>
+
+    <button class="btn" id="chart-btn">Chart my path</button>
+    <div class="loading-row" id="loading-row" hidden>
+      <div class="spinner"></div>
+      <span id="loading-text">Plotting routes&hellip;</span>
+    </div>
+    <div class="error-msg" id="form-error" hidden></div>
+  </section>
+
+  <section class="block" id="results-section" hidden>
+    <h2>Three routes worth exploring</h2>
+    <p class="section-sub">Pick one to turn it into a step-by-step trail you can track.</p>
+    <div id="paths-list"></div>
+  </section>
+
+  <section class="block" id="journey-section" hidden>
+    <h2>Your journey</h2>
+    <p class="section-sub">Check off each waypoint as you complete it.</p>
+    <div class="journey-card" id="journey-card"></div>
+  </section>
+
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
